@@ -8,7 +8,7 @@ object l23 {
   }
 
   def mergeKLists(lists: Array[ListNode]): ListNode = {
-    if (lists.length == 0) null
+    if (lists.length == 0) return null
     var interval = 1
     while (interval < lists.length) {
       for (i <- 0 until (lists.length - interval) by interval * 2) {

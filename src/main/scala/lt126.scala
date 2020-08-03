@@ -79,6 +79,7 @@ object Solution2 {
       })
     }
 
+    @tailrec
     def bfs(q: List[String], wordSet: mutable.Set[String], endWord:String): Unit ={
       if(q.isEmpty) return
       var done = false
@@ -87,7 +88,7 @@ object Solution2 {
         if(done && newWord != endWord) false
         else if(!wordSet.contains(newWord)) false
         else{
-          neighbors += ((newWord, neighbors.getOrElse(newWord, mutable.Set()) + word))
+          neighbors += ((newWord, neighbors.getOrElse(newWord, mutable.Set()) ++ word))
           if(newWord == endWord) {
             done = true
             false
@@ -99,7 +100,7 @@ object Solution2 {
           }
         }
       }))
-      if(done) return
+      if(done)
       else bfs(new_q, newWordSet, endWord)
     }
 
@@ -107,18 +108,19 @@ object Solution2 {
 
     def backtrack(neighbors: mutable.Map[String, mutable.Set[String]], beginWord:String, endWord:String): List[List[String]] ={
       def prepend_neighbor(path: List[String]): List[List[String]] ={
-        val first = path(0)
+        val first = path.head
         neighbors.get(first) match {
           case None    => Nil
           case Some(ns)=> ns.toList.map(n => n::path)
         }
       }
+      @tailrec
       def get_res(res: List[List[String]], beginWord:String): List[List[String]]={
         res match{
           case Nil => Nil
           case res =>
-            res.filter(_(0) == beginWord) match{
-              case Nil => get_res(res.flatMap(prepend_neighbor(_)), beginWord)
+            res.filter(_.head == beginWord) match{
+              case Nil => get_res(res.flatMap(prepend_neighbor), beginWord)
               case _   => res
             }
         }

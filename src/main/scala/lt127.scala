@@ -19,7 +19,7 @@ object lt127 {
     var step = 0
     while(queueBegin.nonEmpty && queueEnd.nonEmpty) {
       val numLevelBegin = queueBegin.size
-      for(i <- 0 until numLevelBegin) {
+      for(_ <- 0 until numLevelBegin) {
         val current = queueBegin.dequeue()
         if(visitedEnd.contains(current)) return 2 * step
         visitedBegin += current
@@ -28,7 +28,7 @@ object lt127 {
       }
 
       val numLevelEnd = queueEnd.size
-      for(i <- 0 until numLevelEnd) {
+      for(_ <- 0 until numLevelEnd) {
         val current = queueEnd.dequeue()
         if(visitedBegin.contains(current)) return 2 * step + 1
         visitedEnd += current

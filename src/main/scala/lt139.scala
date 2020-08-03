@@ -1,9 +1,9 @@
+import scala.collection.mutable
+
 object lt139 {
   def wordBreak(s: String, wordDict: List[String]): Boolean = {
 
-    import scala.collection.mutable.HashMap
-
-    val memo = HashMap[String, Boolean]()
+    val memo = mutable.HashMap[String, Boolean]()
 
     def recursion(s: String): Boolean = {
       if (s.isEmpty) true
