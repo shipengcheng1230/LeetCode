@@ -88,7 +88,7 @@ object Solution2 {
         if(done && newWord != endWord) false
         else if(!wordSet.contains(newWord)) false
         else{
-          neighbors += ((newWord, neighbors.getOrElse(newWord, mutable.Set()) ++ word))
+          neighbors += ((newWord, neighbors.getOrElse(newWord, mutable.Set()) + word))
           if(newWord == endWord) {
             done = true
             false
@@ -100,7 +100,7 @@ object Solution2 {
           }
         }
       }))
-      if(done)
+      if(done) return
       else bfs(new_q, newWordSet, endWord)
     }
 
