@@ -1,6 +1,6 @@
 import scala.collection.mutable
 
-class lt295() {
+object lt295 {
 
   /** initialize your data structure here. */
 
