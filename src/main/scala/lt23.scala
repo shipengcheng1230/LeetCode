@@ -1,6 +1,6 @@
 import scala.annotation.tailrec
 
-object l23 {
+object lt23 {
 
   class ListNode(_x: Int = 0, _next: ListNode = null) {
     var next: ListNode = _next
