@@ -38,7 +38,7 @@ object Solution {
 
   def alienOrder(words: Array[String]): String = {
 
-    val inDegreeMap = mutable.Map(words.flatMap(_.toSet).map(_ -> Set.empty[Char]): _*)
+    val inDegreeMap = mutable.Map(words.flatMap(_.toSet).map(_ -> Set.empty[Char]).toIndexedSeq: _*)
     for (word2 <- words.sliding(2, 1)) {
       if (word2.head.startsWith(word2.last) && word2.head != word2.last) return ""
       else {

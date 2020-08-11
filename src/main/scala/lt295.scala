@@ -7,10 +7,10 @@ object lt295 {
   val lo = new mutable.PriorityQueue[Int]()
   val hi = new mutable.PriorityQueue[Int]()(Ordering[Int].reverse)
 
-  def addNum(num: Int) {
+  def addNum(num: Int): Unit = {
     lo += num
-    hi += lo.dequeue
-    if (lo.size < hi.size) lo += hi.dequeue
+    hi += lo.dequeue()
+    if (lo.size < hi.size) lo += hi.dequeue()
   }
 
   def findMedian(): Double = {

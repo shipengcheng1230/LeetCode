@@ -3,7 +3,7 @@ object lt1167 {
     import scala.collection.mutable
 
     val q = mutable.PriorityQueue.empty[Int].reverse
-    q.enqueue(sticks: _*)
+    q.enqueue(sticks.toIndexedSeq: _*)
     var cost = 0
     while (q.size > 1) {
       val n1 = q.dequeue()

@@ -26,11 +26,11 @@ object lt588 {
       else curr.child.keys.toList.sorted
     }
 
-    def mkdir(path: String) {
+    def mkdir(path: String): Unit = {
       find(path)
     }
 
-    def addContentToFile(filePath: String, content: String) {
+    def addContentToFile(filePath: String, content: String): Unit = {
       val curr = find(filePath)
       curr.content += content
     }

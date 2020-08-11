@@ -8,7 +8,7 @@ object lt346 {
 
     def next(`val`: Int): Double = {
       q.enqueue(`val`)
-      if (q.size > _size) q.dequeue
+      if (q.size > _size) q.dequeue()
       q.sum.toDouble / q.size
     }
   }

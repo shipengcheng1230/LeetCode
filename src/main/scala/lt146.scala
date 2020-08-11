@@ -43,7 +43,7 @@ object lt146 {
       }
     }
 
-    def put(key: Int, value: Int) {
+    def put(key: Int, value: Int): Unit = {
       cache.get(key) match {
         case Some(x) => x.kv.v = value; _move_to_head(x)
         case None =>

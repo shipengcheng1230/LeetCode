@@ -17,7 +17,7 @@ object lt472 {
             for (j <- 0 until i; if (dp(j))) {
               if (preWordSet.contains(word.substring(j, i))) {
                 dp(i) = true
-                break
+                break()
               }
             }
           }

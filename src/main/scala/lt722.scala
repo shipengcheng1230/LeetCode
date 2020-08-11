@@ -18,7 +18,7 @@ object lt722 {
             inBlock = false
             i += 1
           } else if (!inBlock && line.slice(i,i+2) == "//") {
-            break
+            break()
           } else if (!inBlock) {
             newline.append(line(i))
           }

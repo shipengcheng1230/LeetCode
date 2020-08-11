@@ -10,6 +10,6 @@ object lt692 {
       Ordering.by[(String,Int), Int](x => x._2)
         .orElse(Ordering.by[(String, Int), String](x => x._1).reverse))
     heap.enqueue(map.toSeq: _*)
-    for (_ <- (1 to k).toList) yield heap.dequeue._1 // only dequeue/dequeueAll ensure order, `take` does not
+    for (_ <- (1 to k).toList) yield heap.dequeue()._1 // only dequeue/dequeueAll ensure order, `take` does not
   }
 }

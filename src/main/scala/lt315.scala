@@ -14,7 +14,7 @@ object lt315 {
       (ele, acc) => {
         val (tset: TreeSet[KV], res: List[Int]) = acc
         val ntset = tset + ele //at each iteration add the element to a RB Tree (TreeSet) - there are no duplicates due to the included index
-        val size = ntset.size - ntset.from(ele).size //unlike in java .size is O(1) in the Scala implementation
+        val size = ntset.size - ntset.rangeFrom(ele).size //unlike in java .size is O(1) in the Scala implementation
         (ntset, size +: res) //prepend the size info at each step to a list
       })._2
   }
