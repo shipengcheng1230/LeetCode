@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/subarray-sum-equals-k/
 object lt560 {
   def subarraySum(nums: Array[Int], k: Int): Int = {
     var count = 0
