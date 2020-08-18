@@ -4,7 +4,7 @@ object lt30 {
     if (s.isEmpty || words.isEmpty) Nil else {
       def group(s: Seq[String]) = s.groupMapReduce(identity)(_ => 1)(_ + _)
 
-      val target = group(words)
+      val target = group(words.toIndexedSeq)
       val m = words.head.length
       val n = m * words.length
 

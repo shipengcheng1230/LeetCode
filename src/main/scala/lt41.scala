@@ -16,7 +16,7 @@ object lt41 {
           i += 1
         }
       } else i += 1
-      println(nums.toList)
+      println((i, nums.toList))
     }
 
     i = 0
@@ -29,6 +29,6 @@ object lt41 {
   }
 
   def main(args: Array[String]): Unit = {
-    firstMissingPositive(Array(3,4,-1,1))
+    println(firstMissingPositive(Array(3,15,2,1)))
   }
 }
