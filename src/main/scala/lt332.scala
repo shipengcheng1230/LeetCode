@@ -2,24 +2,28 @@
 object lt332 {
   def findItinerary(tickets: List[List[String]]): List[String] = {
 
-    type Graph = Map[String, List[String]]
-    val graph: Graph = tickets.groupMap(_.head)(_.last).view.mapValues(_.sorted).toMap
+    import scala.collection.mutable
 
-    def dfs(graph: Graph, initialPoint: String): (Graph, Seq[String]) = {
-      graph.get(initialPoint) match {
-        case None => (graph, Seq(initialPoint))
-        case Some(Nil) => throw new IllegalStateException("Graphs should not have empty lists")
-        case Some(neighbor :: neighbors) =>
-          val updatedGraph =
-            if (neighbors.isEmpty) graph.removed(initialPoint)
-            else graph.updated(initialPoint, neighbors)
-          val (newGraph, lastSeq) = dfs(updatedGraph, neighbor)
-          val (betterGraph, remainingSeq) = dfs(newGraph, initialPoint)
-          (betterGraph, remainingSeq ++ lastSeq)
+    val graph = tickets
+      .groupMap(_.head)(_.last)
+      .view
+      .mapValues(_.sorted.to(mutable.ArrayDeque))
+      .toMap
+    val ans = mutable.ArrayDeque.empty[String]
+
+    def dfs(origin: String): Unit = {
+      if (graph.contains(origin)) {
+        val dests = graph(origin)
+        while (dests.nonEmpty) {
+          val dest = dests.removeHead()
+          dfs(dest)
+        }
       }
+      ans.prepend(origin)
     }
 
-    dfs(graph, "JFK")._2.toList
+    dfs("JFK")
+    ans.toList
   }
 
 }
