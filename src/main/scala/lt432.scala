@@ -2,8 +2,11 @@
 object lt432 {
   class AllOne() {
 
-    /** Initialize your data structure here. */
+    import scala.collection.mutable
 
+    case class KV(key: Int, freq: Int, prev: KV, next: KV)
+
+    val cache = mutable.Map.empty[String, Int]
 
     /** Inserts a new key <Key> with value 1. Or increments an existing key by 1. */
     def inc(key: String): Unit = {
