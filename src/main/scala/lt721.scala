@@ -12,12 +12,12 @@ object lt721 {
       emails.foreach(email => {
         graph.update(email, graph.getOrElse(email, mutable.ArrayBuffer.empty[String]).append(first))
         graph.update(first, graph.getOrElse(first, mutable.ArrayBuffer.empty[String]).append(email))
-        emailToName.update(email, name)
+        emailToName.update(first, name)
       })
     })
     val seen = mutable.Set.empty[String]
     val ans = mutable.ListBuffer.empty[List[String]]
-    graph.keysIterator.foreach(email => {
+    emailToName.keysIterator.foreach(email => {
       if (!seen.contains(email)) {
         seen.addOne(email)
         val stack = mutable.Stack.empty[String]

@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/maximal-rectangle/
 object lt85 {
   def maximalRectangle(matrix: Array[Array[Char]]): Int = {
     if (matrix.isEmpty) return 0
