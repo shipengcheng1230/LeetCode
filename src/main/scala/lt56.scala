@@ -1,4 +1,5 @@
-object l56 {
+object lt56 {
+
   def merge(intervals: Array[Array[Int]]): Array[Array[Int]] = {
     val x = intervals.sortBy(_(0))
     x.foldLeft(Array[Array[Int]]())((a, b) => {
