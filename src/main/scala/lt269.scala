@@ -1,6 +1,8 @@
-import scala.annotation.tailrec
-
+// https://leetcode.com/problems/alien-dictionary/
 object lt269 {
+  import scala.annotation.tailrec
+  import scala.collection.mutable
+
   def alienOrder(words: Array[String]): String = {
 
     val inDegreeMap = words.sliding(2, 1)
@@ -31,13 +33,8 @@ object lt269 {
       case Some(x) => x.reverse.mkString("")
     }
   }
-}
 
-object Solution {
-  import scala.collection.mutable
-
-  def alienOrder(words: Array[String]): String = {
-
+  def alienOrder2(words: Array[String]): String = {
     val inDegreeMap = mutable.Map(words.flatMap(_.toSet).map(_ -> Set.empty[Char]).toIndexedSeq: _*)
     for (word2 <- words.sliding(2, 1)) {
       if (word2.head.startsWith(word2.last) && word2.head != word2.last) return ""

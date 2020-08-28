@@ -1,6 +1,6 @@
-import scala.collection.mutable
-
-object l49 {
+// https://leetcode.com/problems/group-anagrams/
+object lt49 {
+  import scala.collection.mutable
 
   def groupAnagrams(strs: Array[String]): List[List[String]] = {
 

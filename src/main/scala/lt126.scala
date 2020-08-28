@@ -1,7 +1,8 @@
-import scala.annotation.tailrec
-import scala.collection.mutable
-
+// https://leetcode.com/problems/word-ladder-ii/
 object lt126 {
+  import scala.annotation.tailrec
+  import scala.collection.mutable
+
   def findLadders(start: String, end: String, wordList: List[String]): List[List[String]] = {
     val neighbourMap = mutable.Map[String, Set[String]]()
     val distance = mutable.Map[String, Int]()
@@ -43,16 +44,7 @@ object lt126 {
     dfs(List(start), 1).map(_.reverse)
   }
 
-  def main(args: Array[String]): Unit = {
-    val start = "hit"
-    val end = "cog"
-    val wordList = List("hot","dot","dog","lot","log","cog")
-    findLadders(start, end, wordList).foreach(println(_))
-  }
-}
-
-object Solution2 {
-  def findLadders(beginWord: String, endWord: String, wordList: List[String]): List[List[String]] = {
+  def findLadders2(beginWord: String, endWord: String, wordList: List[String]): List[List[String]] = {
     val wordSet = wordList.to(mutable.Set)
 
     var neighbors = mutable.Map[String, mutable.Set[String]]()
@@ -131,6 +123,7 @@ object Solution2 {
 
     backtrack(neighbors, beginWord, endWord)
   }
+
   def main(args: Array[String]): Unit = {
     val start = "hit"
     val end = "cog"

@@ -1,15 +1,15 @@
-import java.io.OutputStream
-
-import scala.annotation.tailrec
-
-object Fudge {
-  implicit class BlurpConsole(c: scala.Console.type) {
-    def setOut(x: OutputStream): Unit = ()
-  }
-}
-import Fudge._
-
+// https://leetcode.com/problems/search-a-2d-matrix-ii/
 object lt240 {
+  import java.io.OutputStream
+  import scala.annotation.tailrec
+
+  object Fudge {
+    implicit class BlurpConsole(c: scala.Console.type) {
+      def setOut(x: OutputStream): Unit = ()
+    }
+  }
+  import Fudge._
+
   def searchMatrix(matrix: Array[Array[Int]], target: Int): Boolean = {
     if (matrix.isEmpty) return false
 
