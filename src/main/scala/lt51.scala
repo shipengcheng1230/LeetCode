@@ -4,9 +4,9 @@ object lt51 {
 
     val ans = scala.collection.mutable.ListBuffer.empty[List[String]]
 
-    def placeQueue(d: Array[Int], r: Int, c: Int): Unit = d(r) = c
+    def placeQueen(d: Array[Int], r: Int, c: Int): Unit = d(r) = c
 
-    def removeQueue(d: Array[Int], r: Int, c: Int): Unit = d(r) = 0
+    def removeQueen(d: Array[Int], r: Int, c: Int): Unit = d(r) = 0
 
     def valid(d: Array[Int], r: Int, c: Int): Boolean = {
       val prevCols = (0 until r).map(d(_)).contains(c)
@@ -22,9 +22,9 @@ object lt51 {
       else {
         (1 to n).foreach(i => {
           if (valid(d, k, i)) {
-            placeQueue(d, k, i)
+            placeQueen(d, k, i)
             helper(k + 1, d)
-            removeQueue(d, k, i)
+            removeQueen(d, k, i)
           }
         })
       }
