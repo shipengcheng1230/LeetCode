@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/burst-balloons/
 object lt312 {
+  // same as lt1547
   def maxCoins(nums: Array[Int]): Int = {
     val _nums = Array.fill(nums.length + 2)(0)
     val n = _nums.length
