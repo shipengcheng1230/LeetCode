@@ -11,7 +11,7 @@ object lt98 {
 
     def helper(node: TreeNode, lower: Int, upper: Int): Boolean = {
       if (node == null) true
-      else if (node.value < lower && node.value > upper) false
+      else if (node.value < lower || node.value > upper) false
       else helper(node.left, lower, node.value) && helper(node.right, node.value, upper)
     }
     helper(root, Int.MinValue, Int.MaxValue)
