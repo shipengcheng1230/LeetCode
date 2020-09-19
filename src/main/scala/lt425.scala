@@ -20,15 +20,13 @@ object lt425 {
       else {
         val step = res.length
         val prefix = res.map(_(step)).mkString("")
-        prefixMap.get(prefix) match {
-          case Some(l) =>
-            l.foreach(w => {
-              res.append(w)
-              backtrack(res)
-              res.trimEnd(1)
-            })
-          case None => None
-        }
+        prefixMap.get(prefix).foreach(l => {
+          l.foreach(w => {
+            res.append(w)
+            backtrack(res)
+            res.trimEnd(1)
+          })
+        })
       }
     }
 
