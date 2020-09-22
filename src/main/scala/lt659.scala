@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/split-array-into-consecutive-subsequences/
 object lt659 {
   def isPossible(nums: Array[Int]): Boolean = {
     if (nums.isEmpty || nums.length <= 0) return false
@@ -39,5 +40,9 @@ object lt659 {
       p3 = c3
     }
     p1 == 0 && p2 == 0
+  }
+
+  def main(args: Array[String]): Unit = {
+    println(isPossible(Array(1,2,3,3,4,4,5,5)))
   }
 }
