@@ -1,11 +1,9 @@
 // https://leetcode.com/problems/minimum-cost-to-connect-two-groups-of-points/
 object lt1595 {
   def connectTwoGroups(cost: List[List[Int]]): Int = {
-    import scala.collection.mutable
-
     val m = cost.length
     val n = cost.head.length
-    var mask = 1 << m
+    val mask = 1 << m
     var dp = Array.fill(mask)(Int.MaxValue)
     dp(0) = 0
     for (i <- 0 until n) {
