@@ -22,7 +22,7 @@ object lt471 {
   def collapse(dp: Array[Array[String]], str: String, i: Int): String = {
     val pos = (str + str).indexOf(str, 1)
     if (pos >= str.length) str
-    else (str.length / pos) + "[" + dp(i)(i + pos - 1) + "]"
+    else s"${str.length / pos}[${dp(i)(i + pos - 1)}]"
   }
 
   def main(args: Array[String]): Unit = {
