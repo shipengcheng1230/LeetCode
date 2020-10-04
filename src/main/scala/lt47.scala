@@ -20,6 +20,6 @@ object lt47 {
   }
 
   def main(args: Array[String]): Unit = {
-    println(permuteUnique(Array(1,2,3)))
+    println(permuteUnique(Array(1,1)))
   }
 }
