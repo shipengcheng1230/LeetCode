@@ -2,32 +2,31 @@
 object lt1625 {
   def findLexSmallestString(s: String, a: Int, b: Int): String = {
 
-    import scala.collection.mutable.Set
+    import scala.collection.mutable.{Set, Queue}
 
-    val seen = Set.empty[String]
+    val seen = Set.empty[String].addOne(s)
+    val q = Queue.empty[String].enqueue(s)
+    val n = s.length
+    var ans = s
 
-    def rotate(s: String, b: Int): String =
-      s.takeRight(b) ++ s.take(s.length - b)
+    def rotate(s: String): String =
+      s.takeRight(b) ++ s.take(n - b)
 
-    def add(s: String, a: Int): String = {
-      s.map(_.asDigit).zipWithIndex.map(x => if (x._2 % 2 == 1) (x._1 + a) % 10 else x._1).mkString("")
+    def add(s: String): String = s
+      .map(_.asDigit).zipWithIndex
+      .map(x => if (x._2 % 2 == 1) (x._1 + a) % 10 else x._1)
+      .mkString("")
+
+    while (q.nonEmpty) {
+      val x = q.dequeue()
+      if (Ordering[String].compare(x, ans) < 0) ans = x
+
+      val a = rotate(x)
+      if (seen.add(a)) q.enqueue(a)
+      val b = add(x)
+      if (seen.add(b)) q.enqueue(b)
     }
 
-    def dfs(s: String): String = {
-      seen.contains(s) match {
-        case false =>
-          seen.addOne(s)
-          dfs(rotate(s, b))
-          dfs(add(s, a))
-        case true =>
-          seen.min
-      }
-    }
-
-    dfs(s)
-  }
-
-  def main(args: Array[String]): Unit = {
-    findLexSmallestString("5525", 9, 2)
+    ans
   }
 }
